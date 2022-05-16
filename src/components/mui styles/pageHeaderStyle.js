@@ -7,6 +7,7 @@ export const StyledHeader = styled('header', {
 })({
   height: '40vh',
   width: '100%',
+  opacity: '.4',
   backgroundImage: `linear-gradient(rgb(44, 4, 28, .9),rgba(.3, .5, .6, .7)), url(${HeaderBackground})`,
   backgroundPosition: 'bottom',
   backgroundRepeat: 'no-repeat',
