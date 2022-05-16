@@ -8,11 +8,11 @@ import LyricsOutlinedIcon from '@mui/icons-material/LyricsOutlined';
 const PageHeader = () => {
 
   return (
-    <StyledHeader>
-      <StyledHeaderText>
-        <LyricsOutlinedIcon style={{fontSize: '60px'}} />
+    <StyledHeader id='page-header'>
+      <StyledHeaderText id="app-name">
+        <LyricsOutlinedIcon className='logo-icon' style={{fontSize: '60px'}} />
         <h1 style={{fontSize: '50px'}}>LyricGenerator</h1>
-        <LyricsOutlinedIcon style={{fontSize: '60px', marginLeft: '10px'}} />
+        <LyricsOutlinedIcon className='logo-icon' style={{fontSize: '60px', marginLeft: '10px'}} />
       </StyledHeaderText>
     </StyledHeader>
   )

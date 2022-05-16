@@ -2,12 +2,8 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 const Dotenv = require('dotenv-webpack')
-// import 'dotenv/config';
 
 module.exports = {
-  // env: {
-  //   REQUEST_KEY = process.env.REQUEST_KEY
-  // },
   resolve: {
     fallback: {
       process: require.resolve("process/browser"),

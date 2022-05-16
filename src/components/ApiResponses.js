@@ -4,7 +4,7 @@ const ApiResponses = () => {
 
   return (
     <div>
-      <h1>Hello, Api Responses!</h1>
+      <p>Hello, Api Responses!</p>
     </div>
   )
 }
