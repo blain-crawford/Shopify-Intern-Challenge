@@ -52,23 +52,26 @@ const App = () => {
       })
       .catch(function (error) {
         // handle error
+        console.log(error);
         setSearchStatus(false);
       });
   };
 
   return (
-    <StyledApp>
-      <PageHeader />
-      <SongGenerator
-        theme={lyricsTheme}
-        findLyricSuggestions={findLyricSuggestions}
-        sendLyricRequest={sendLyricRequest}
-        searchStatus={searchStatus}
-      />
-      <ApiResponses 
-        suggestedLyrics={suggestedLyrics}
-      />
-    </StyledApp>
+    <div>
+      <StyledApp>
+        <PageHeader />
+        <SongGenerator
+          theme={lyricsTheme}
+          findLyricSuggestions={findLyricSuggestions}
+          sendLyricRequest={sendLyricRequest}
+          searchStatus={searchStatus}
+        />
+        <ApiResponses 
+          suggestedLyrics={suggestedLyrics}
+        />
+      </StyledApp>
+    </div>
   );
 };
 

@@ -46,13 +46,7 @@ const SongGenerator = ({
           aria-describedby='theme-helper-text'
         ></StyledThemeInput>
         <StyledThemeHelperText id='theme-helper-text'>
-          `Enter Lyric Theme Here $
-          {searchStatus ? (
-            <></>
-          ) : (
-            <p style={{ color: 'blue' }}>** Please Try a different Search</p>
-          )}
-          `
+          Enter Lyric Theme Here{searchStatus ? (<></>) : (<span style={{ color: 'blue' }}>** Please Try a different Search</span>)}
         </StyledThemeHelperText>
         <StyledSearchButton id='theme-search-button' onClick={sendLyricRequest}>
           Get Lyrics

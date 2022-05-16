@@ -11,7 +11,6 @@ export const StyledApp = styled('div', {
   postition: 'relative',
   display: 'flex',
   flexDirection: 'column',
-  alignItems: 'center',
   margin: '0',
   padding: '0'
 });
