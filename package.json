@@ -1,0 +1,43 @@
+{
+  "name": "front-end-challenge",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "webpack-dev-server --mode development --open --hot",
+    "build": "webpack --mode production"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@emotion/react": "^11.9.0",
+    "@emotion/styled": "^11.8.1",
+    "@mui/icons-material": "^5.6.2",
+    "@mui/material": "^5.7.0",
+    "@mui/system": "^5.7.0",
+    "assert": "^2.0.0",
+    "axios": "^0.27.2",
+    "browserify-zlib": "^0.2.0",
+    "buffer": "^6.0.3",
+    "dotenv": "^16.0.1",
+    "dotenv-webpack": "^7.1.0",
+    "process": "^0.11.10",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0",
+    "stream-browserify": "^3.0.0",
+    "util": "^0.12.4"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.17.10",
+    "@babel/preset-react": "^7.16.7",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.2.5",
+    "css-loader": "^6.7.1",
+    "html-webpack-plugin": "^5.5.0",
+    "style-loader": "^3.3.1",
+    "webpack": "^5.72.1",
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.9.0"
+  }
+}
