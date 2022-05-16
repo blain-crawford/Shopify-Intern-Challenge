@@ -53,19 +53,19 @@ export const StyledForm = styled(FormControl, {
 })({
   width: '70%',
   margin: '50px auto',
-  color: 'rgb(44, 4, 28, .9)',
+  color: 'rgb(44, 4, 28)',
 });
 
 export const StyledThemeInput = styled(Input, {
   name: 'StyledThemeInput',
 })({
-  color: 'rgb(44, 4, 28, .9)',
+  color: 'rgb(44, 4, 28)',
 });
 
 export const StyledThemeInputLabel = styled(InputLabel, {
   name: 'StyledThemeInputLabel',
 })({
-  color: 'rgb(44, 4, 28, .9)',
+  color: 'rgb(44, 4, 28)',
   fontFamily: 'Kanit, sans-serif',
 });
 
@@ -75,7 +75,7 @@ export const StyledThemeHelperText = styled(FormHelperText, {
   display: 'flex',
   alignItems: 'center',
   gap: '10px',
-  color: 'rgb(44, 4, 28, .9)',
+  color: 'rgb(44, 4, 28)',
 });
 
 export const StyledSearchButton = styled(Button, {
@@ -89,7 +89,7 @@ export const StyledSearchButton = styled(Button, {
   border: '2px solid rgb(44, 4, 28,.4)',
   borderRadius: '20px',
   backgroundColor: 'rgb(255,255,255,.9)',
-  color: 'rgb(44, 4, 28, .9)',
+  color: 'rgb(44, 4, 28)',
   ':hover': {
     color: 'white',
     border: '#5b083a',

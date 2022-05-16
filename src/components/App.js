@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PageHeader from './PageHeader';
 import SongGenerator from './SongGeneratorForm';
 import ApiResponses from './ApiResponses';
-import { StyledApp } from './mui styles/appStyles';
+import { StyledApp } from './mui-styles/appStyles';
 import axios from 'axios';
 
 const App = () => {
@@ -65,7 +65,9 @@ const App = () => {
         sendLyricRequest={sendLyricRequest}
         searchStatus={searchStatus}
       />
-      <ApiResponses />
+      <ApiResponses 
+        suggestedLyrics={suggestedLyrics}
+      />
     </StyledApp>
   );
 };

@@ -9,7 +9,7 @@ import {
   StyledThemeHelperText,
   StyledFormContainer,
   StyledSearchButton,
-} from './mui styles/SongGeneratorFormStyles';
+} from './mui-styles/SongGeneratorFormStyles';
 
 const SongGenerator = ({
   theme,
