@@ -15,7 +15,6 @@ export const StyledHeader = styled('header', {
   backgroundSize: 'cover',
   alignItems: 'center',
   justifyContent: 'space-between',
-  boxShadow: '0px 1px 29px 20px rgba(0,0,0,0.46)',
 });
 
 export const StyledHeaderText = styled('div', {
