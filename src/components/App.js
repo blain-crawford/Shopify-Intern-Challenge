@@ -2,15 +2,16 @@ import React, { useState } from 'react';
 import PageHeader from './PageHeader';
 import SongGenerator from './SongGeneratorForm';
 import ApiResponses from './ApiResponses';
+import { StyledApp } from './mui styles/appStyles';
 
 const App = () => {
   return (
-    <div>
+    <StyledApp>
       <PageHeader />
       <SongGenerator />
       <ApiResponses />
       <h1>Hello, Shopify!</h1>
-    </div>
+    </StyledApp>
   );
 };
 
