@@ -6,8 +6,8 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 
 export const StyledApiResponseContainer = styled('ul', {
-  name:'StyledApiResponseContainer'
-}) ({
+  name: 'StyledApiResponseContainer',
+})({
   width: '100%',
   minHeight: '100px',
   display: 'flex',
@@ -17,12 +17,12 @@ export const StyledApiResponseContainer = styled('ul', {
   justifyContent: 'center',
   margin: '0 auto',
   gap: '20px',
-  listStyle: 'none'
-})
+  listStyle: 'none',
+});
 
 export const StyledCard = styled(Card, {
-  name: 'StyledCard'
-}) ({
+  name: 'StyledCard',
+})({
   width: '300px',
   backgroundColor: 'rgb(44, 4, 28)',
   color: 'white',
@@ -31,11 +31,11 @@ export const StyledCard = styled(Card, {
   borderRadius: '10px',
   textAlign: 'center',
   boxShadow: '0px 1px 29px 20px rgba(0,0,0,0.46)',
-})
+});
 
 export const StyledCardToEdit = styled(Card, {
-  name: 'StyledCard'
-}) ({
+  name: 'StyledCard',
+})({
   width: '300px',
   backgroundColor: 'rgb(255, 255, 255)',
   color: 'rgb(44, 4, 28)',
@@ -44,41 +44,41 @@ export const StyledCardToEdit = styled(Card, {
   borderRadius: '10px',
   textAlign: 'center',
   boxShadow: '0px 1px 29px 20px rgba(0,0,0,0.46)',
-})
+});
 
 export const StyledCardContent = styled(CardContent, {
-  name: 'StyledCardContent'
-}) ({
+  name: 'StyledCardContent',
+})({
   width: '80%',
-  margin: '0 auto'
-})
+  margin: '0 auto',
+});
 
 export const StyledLyricList = styled('ul', {
-  name: 'StyledLyricList'
-}) ({
+  name: 'StyledLyricList',
+})({
   listStyle: 'none',
-  display: 'table', 
-  margin: '0 auto', 
-  padding: '0', 
+  display: 'table',
+  margin: '0 auto',
+  padding: '0',
   textAlign: 'center',
-})
+});
 
 export const StyledTextField = styled(TextField, {
-  name: 'StyledTextField'
-}) ({
+  name: 'StyledTextField',
+})({
   width: '90%',
-  color: 'rgb(44, 4, 28)'
-})
+  color: 'rgb(44, 4, 28)',
+});
 
 export const StyledCardActions = styled(CardActions, {
-  name: 'StyledCardActions'
-}) ({
-  BorderTop: '1px solid rgb(255,255,255,.6)'
-})
+  name: 'StyledCardActions',
+})({
+  BorderTop: '1px solid rgb(255,255,255,.6)',
+});
 
 export const StyledCardButton = styled(Button, {
-  name: 'StyledCardButton'
-}) ({
+  name: 'StyledCardButton',
+})({
   color: '#5b083a',
   backgroundColor: 'rgb(255,102,0, .2)',
   display: 'flex',
@@ -93,4 +93,4 @@ export const StyledCardButton = styled(Button, {
     border: '1px solid white',
     backgroundColor: 'rgb(44, 4, 28)',
   },
-})
+});

@@ -1,5 +1,4 @@
 import { styled } from '@mui/system';
-import HeaderBackground from '../../images/Header-Background.jpeg';
 
 export const StyledApp = styled('div', {
   name: 'StyledApp',
@@ -12,5 +11,5 @@ export const StyledApp = styled('div', {
   display: 'flex',
   flexDirection: 'column',
   margin: '0',
-  padding: '0'
+  padding: '0',
 });

@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { 
+import React from 'react';
+import {
   StyledApiResponseContainer,
   StyledCard,
   StyledCardToEdit,
@@ -7,61 +7,59 @@ import {
   StyledCardActions,
   StyledCardButton,
   StyledLyricList,
-  StyledTextField
-} from '../components/mui-styles/apiResponseStyles'
+  StyledTextField,
+} from '../components/mui-styles/apiResponseStyles';
 
 const ApiResponses = ({
-  suggestedLyrics, 
-  viewOrEdit, 
-  alternateViewOrEdit, 
+  suggestedLyrics,
+  viewOrEdit,
+  alternateViewOrEdit,
   lyricsToEdit,
   editLyrics,
-  deleteSuggestion
+  deleteSuggestion,
 }) => {
   return (
     <StyledApiResponseContainer>
-        {suggestedLyrics.map((lyrics, lyricsIndex) => {
-          if(lyricsIndex !== lyricsToEdit) {
-            return (
-              <li key={lyricsIndex}>
-                <StyledCard className='lyric-and-prompt-container'>
-                <StyledCardContent
-                  className="lyric-prompt"
-                >
-                  <p style={{borderBottom: '1px solid rgb(255,255,255,.6)'}}>
+      {suggestedLyrics.map((lyrics, lyricsIndex) => {
+        if (lyricsIndex !== lyricsToEdit) {
+          return (
+            <li key={lyricsIndex}>
+              <StyledCard className='lyric-and-prompt-container'>
+                <StyledCardContent className='lyric-prompt'>
+                  <p style={{ borderBottom: '1px solid rgb(255,255,255,.6)' }}>
                     {lyrics.lyricPrompt}
                   </p>
-                    <StyledLyricList
-                      className="lyric-response"
-                    >
-                      {lyrics.lyrics.split('\n').map((sentence, sentenceIndex) => {
+                  <StyledLyricList className='lyric-response'>
+                    {lyrics.lyrics
+                      .split('\n')
+                      .map((sentence, sentenceIndex) => {
                         return (
                           <li
                             key={sentenceIndex}
-                            style={{marginBottom: '5px'}}
+                            style={{ marginBottom: '5px' }}
                           >
-                          {sentence}
+                            {sentence}
                           </li>
-                        )
+                        );
                       })}
-                    </StyledLyricList>
+                  </StyledLyricList>
                 </StyledCardContent>
                 <StyledCardActions>
                   <StyledCardButton
-                    className="edit-lyric-button" 
-                    size="small"
+                    className='edit-lyric-button'
+                    size='small'
                     id={lyricsIndex}
                     onClick={() => {
                       alternateViewOrEdit(lyricsIndex);
                     }}
                   >
                     Edit
-                    </StyledCardButton>
-                  <StyledCardButton 
-                    className="delete-lyric-button"
-                    size="small"
+                  </StyledCardButton>
+                  <StyledCardButton
+                    className='delete-lyric-button'
+                    size='small'
                     onClick={() => {
-                      deleteSuggestion(lyricsIndex)
+                      deleteSuggestion(lyricsIndex);
                     }}
                   >
                     Delete
@@ -69,49 +67,44 @@ const ApiResponses = ({
                 </StyledCardActions>
               </StyledCard>
             </li>
-            )
-          } else if (viewOrEdit === 'edit' && lyricsToEdit === lyricsIndex) {
-            return (
-              <li key={lyricsIndex}>
-                <StyledCardToEdit 
-                className='lyric-and-prompt-container-for-editing'
-                >
-                <StyledCardContent
-                  className="lyric-prompt"
-                >
-                  <p style={{borderBottom: '1px solid rgb(44, 4, 28,.8)'}}>
+          );
+        } else if (viewOrEdit === 'edit' && lyricsToEdit === lyricsIndex) {
+          return (
+            <li key={lyricsIndex}>
+              <StyledCardToEdit className='lyric-and-prompt-container-for-editing'>
+                <StyledCardContent className='lyric-prompt'>
+                  <p style={{ borderBottom: '1px solid rgb(44, 4, 28,.8)' }}>
                     {lyrics.lyricPrompt}
                   </p>
                   <div>
                     <StyledTextField
-                        id="outlined-multiline-static"
-                        label="Multiline"
-                        multiline
-                        rows={4}
-                        defaultValue={lyrics.lyrics}
-                        onChange={(e) => {
-                          editLyrics(e.target.value, lyricsIndex)
-                        }}
-                    >
-                    </StyledTextField>
+                      id='outlined-multiline-static'
+                      label='Multiline'
+                      multiline
+                      rows={4}
+                      defaultValue={lyrics.lyrics}
+                      onChange={(e) => {
+                        editLyrics(e.target.value, lyricsIndex);
+                      }}
+                    ></StyledTextField>
                   </div>
                 </StyledCardContent>
                 <StyledCardActions>
                   <StyledCardButton
-                    className="edit-lyric-button" 
-                    size="small"
+                    className='edit-lyric-button'
+                    size='small'
                     id={lyricsIndex}
                     onClick={() => {
                       alternateViewOrEdit(lyricsIndex);
                     }}
                   >
                     Save Edit
-                    </StyledCardButton>
-                  <StyledCardButton 
-                    className="delete-lyric-button"
-                    size="small"
-                    onClick={(e) => {
-                      console.log(lyricsIndex)
+                  </StyledCardButton>
+                  <StyledCardButton
+                    className='delete-lyric-button'
+                    size='small'
+                    onClick={() => {
+                      deleteSuggestion(lyricsIndex);
                     }}
                   >
                     Delete
@@ -119,10 +112,9 @@ const ApiResponses = ({
                 </StyledCardActions>
               </StyledCardToEdit>
             </li>
-            )
-          }
-        })}
-        
+          );
+        }
+      })}
     </StyledApiResponseContainer>
   );
 };

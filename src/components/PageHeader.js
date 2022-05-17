@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { StyledHeader, StyledHeaderText } from './mui-styles/pageHeaderStyle';
 import LyricsOutlinedIcon from '@mui/icons-material/LyricsOutlined';
-
 
 const PageHeader = () => {
   return (

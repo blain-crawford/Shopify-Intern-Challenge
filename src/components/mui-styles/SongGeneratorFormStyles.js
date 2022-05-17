@@ -4,6 +4,9 @@ import Input from '@mui/material/Input';
 import FormHelperText from '@mui/material/FormHelperText';
 import InputLabel from '@mui/material/InputLabel';
 import FormControl from '@mui/material/FormControl';
+import OutlinedInput from '@mui/material/OutlinedInput';
+import MenuItem from '@mui/material/MenuItem';
+import Select from '@mui/material/Select';
 
 export const StyledFormContainer = styled('div', {
   name: 'StyledFormContainer',
@@ -76,6 +79,43 @@ export const StyledThemeHelperText = styled(FormHelperText, {
   alignItems: 'center',
   gap: '10px',
   color: 'rgb(44, 4, 28)',
+});
+
+export const StyledFormControl = styled(FormControl, {
+  name: 'StyledFormControl',
+})({});
+
+export const StyledEngineInputLabel = styled(InputLabel, {
+  name: 'StyledEngineInputLabel',
+})({
+  color: 'rgb(44, 4, 28)',
+  fontSize: '18px',
+});
+
+export const StyledOutlinedInput = styled(OutlinedInput, {
+  name: 'StyledOutlinedInput',
+})({
+  color: 'rgb(44, 4, 28)',
+  backgroundColor: 'rgb(255,255,255, .9)',
+  borderRadius: '20px',
+});
+
+export const StyledMenuItem = styled(MenuItem, {
+  name: 'StyledMenuItem',
+})({});
+
+export const StyledSelect = styled(Select, {
+  name: 'StyledSelect',
+})({});
+
+export const StyledInputAndButtonContainer = styled('div', {
+  name: 'StyledInputAndButtonContainer',
+})({
+  marginTop: '15px',
+  display: 'flex',
+  flexDirection: 'row',
+  justifyContent: 'flex-end',
+  alignItems: 'center',
 });
 
 export const StyledSearchButton = styled(Button, {

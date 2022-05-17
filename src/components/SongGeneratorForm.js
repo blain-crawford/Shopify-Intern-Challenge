@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   StyledForm,
   StyledInstructions,
@@ -7,6 +7,12 @@ import {
   StyledThemeInput,
   StyledThemeInputLabel,
   StyledThemeHelperText,
+  StyledInputAndButtonContainer,
+  StyledFormControl,
+  StyledEngineInputLabel,
+  StyledOutlinedInput,
+  StyledMenuItem,
+  StyledSelect,
   StyledFormContainer,
   StyledSearchButton,
 } from './mui-styles/SongGeneratorFormStyles';
@@ -16,6 +22,9 @@ const SongGenerator = ({
   findLyricSuggestions,
   sendLyricRequest,
   searchStatus,
+  engines,
+  selectedEngine,
+  chooseEngine,
 }) => {
   return (
     <StyledFormContainer>
@@ -29,7 +38,7 @@ const SongGenerator = ({
           <h3>
             Enter the theme to any songs you are currently writing below and get
             some lyric suggestions! Like what you're seeing? Further edit and
-            work with the suggested lyrics on the interactive cards below!
+            work with the suggested lyrics on the interactive cards below! Not sure you like your responses?  Choose from one of any lyric generating engines in the drop down menu for new and different results!
           </h3>
         </StyledInstructionsBody>
       </StyledInstructions>
@@ -46,11 +55,45 @@ const SongGenerator = ({
           aria-describedby='theme-helper-text'
         ></StyledThemeInput>
         <StyledThemeHelperText id='theme-helper-text'>
-          Enter Lyric Theme Here{searchStatus ? (<></>) : (<span style={{ color: 'blue' }}>** Please Try a different Search</span>)}
+          Enter Lyric Theme Here
+          {searchStatus ? (
+            <></>
+          ) : (
+            <span style={{ color: 'blue' }}>
+              ** Please Try a different Search
+            </span>
+          )}
         </StyledThemeHelperText>
-        <StyledSearchButton id='theme-search-button' onClick={sendLyricRequest}>
-          Get Lyrics
-        </StyledSearchButton>
+        <StyledInputAndButtonContainer>
+          <StyledFormControl sx={{ m: 1, width: '30%' }}>
+            <StyledEngineInputLabel id='engine-selector'>
+              Engine
+            </StyledEngineInputLabel>
+            <StyledSelect
+              labelId='engine-selector'
+              id='engines'
+              value={selectedEngine}
+              onChange={(e) => {
+                chooseEngine(e.target.value);
+              }}
+              input={<StyledOutlinedInput label='Engine' />}
+              // MenuProps={MenuProps}
+            >
+              {engines.map((engine, engineIndex) => (
+                <StyledMenuItem key={engineIndex} value={engine}>
+                  {engine}
+                </StyledMenuItem>
+              ))}
+            </StyledSelect>
+          </StyledFormControl>
+
+          <StyledSearchButton
+            id='theme-search-button'
+            onClick={sendLyricRequest}
+          >
+            Get Lyrics
+          </StyledSearchButton>
+        </StyledInputAndButtonContainer>
       </StyledForm>
     </StyledFormContainer>
   );
