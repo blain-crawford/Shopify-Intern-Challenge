@@ -1,5 +1,6 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
-import { css } from "@emotion/react";
+import { css } from '@emotion/react';
 import {
   StyledForm,
   StyledInstructions,
@@ -18,7 +19,6 @@ import {
   StyledSearchButton,
 } from './mui-styles/SongGeneratorFormStyles';
 import { ClipLoader } from 'react-spinners';
-
 
 const StyledSpinner = css`
   margin: auto;
@@ -92,7 +92,6 @@ const SongGenerator = ({
                 chooseEngine(e.target.value);
               }}
               input={<StyledOutlinedInput label='Engine' />}
-              // MenuProps={MenuProps}
             >
               {engines.map((engine, engineIndex) => (
                 <StyledMenuItem key={engineIndex} value={engine}>

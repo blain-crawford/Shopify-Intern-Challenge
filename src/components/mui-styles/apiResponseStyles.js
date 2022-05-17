@@ -79,8 +79,6 @@ export const StyledCardActions = styled(CardActions, {
 export const StyledCardButton = styled(Button, {
   name: 'StyledCardButton',
 })({
-  color: '#5b083a',
-  backgroundColor: 'rgb(255,102,0, .2)',
   display: 'flex',
   width: '50%',
   margin: '10px 0 0 auto',

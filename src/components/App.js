@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import PageHeader from './PageHeader';
 import SongGenerator from './SongGeneratorForm';
@@ -5,7 +6,6 @@ import ApiResponses from './ApiResponses';
 import { StyledApp } from './mui-styles/appStyles';
 import axios from 'axios';
 import useLocalStorage from 'react-use-localstorage';
-import { ClipLoader } from 'react-spinners';
 
 const App = () => {
   const [storedIdeas, setStoredIdeas] = useLocalStorage('storedIdeas');
@@ -13,11 +13,12 @@ const App = () => {
   const [suggestedLyrics, setSuggestedLyrics] = useState(
     JSON.parse(localStorage.storedIdeas),
   );
+  
   const [searchStatus, setSearchStatus] = useState(true);
   const [viewOrEdit, setViewOrEdit] = useState('view');
   const [lyricsToEdit, setLyricsToEdit] = useState('');
   const [selectedEngine, setSelectedEngine] = useState('text-curie-001');
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
   const engines = [
     'text-curie-001',
     'text-davinci-002',
@@ -38,12 +39,15 @@ const App = () => {
     method: 'POST',
     headers: {
       'content-type': 'application/json',
+
+      // eslint-disable-next-line no-undef
       Authorization: `Bearer ${process.env.REQUEST_KEY}`,
     },
     data: testRequest,
     url: `https://api.openai.com/v1/engines/${selectedEngine}/completions`,
   };
 
+  // eslint-disable-next-line no-unused-vars
   const checkForStoredIdeas = (() => {
     if (!localStorage.storedIdeas) {
       setStoredIdeas('[]');
@@ -60,7 +64,7 @@ const App = () => {
   };
 
   const sendLyricRequest = () => {
-    setLoading(true)
+    setLoading(true);
     axios(options)
       .then(function (response) {
         // handle success
@@ -83,7 +87,7 @@ const App = () => {
         );
         setLyricsTheme('');
         setSearchStatus(true);
-        setLoading(false)
+        setLoading(false);
       })
       .catch(function (error) {
         // handle error
