@@ -7,13 +7,20 @@ import { StyledApp } from './mui-styles/appStyles';
 import axios from 'axios';
 import useLocalStorage from 'react-use-localstorage';
 
+  // eslint-disable-next-line no-unused-vars
+  const checkForStoredIdeas = (() => {
+    if (!localStorage.storedIdeas) {
+      localStorage.storedIdeas = JSON.stringify([])
+    }
+  })();
+
 const App = () => {
   const [storedIdeas, setStoredIdeas] = useLocalStorage('storedIdeas');
   const [lyricsTheme, setLyricsTheme] = useState('');
   const [suggestedLyrics, setSuggestedLyrics] = useState(
     JSON.parse(localStorage.storedIdeas),
   );
-  
+
   const [searchStatus, setSearchStatus] = useState(true);
   const [viewOrEdit, setViewOrEdit] = useState('view');
   const [lyricsToEdit, setLyricsToEdit] = useState('');
@@ -46,13 +53,6 @@ const App = () => {
     data: testRequest,
     url: `https://api.openai.com/v1/engines/${selectedEngine}/completions`,
   };
-
-  // eslint-disable-next-line no-unused-vars
-  const checkForStoredIdeas = (() => {
-    if (!localStorage.storedIdeas) {
-      setStoredIdeas('[]');
-    }
-  })();
 
   const findLyricSuggestions = (theme) => {
     let newTheme = theme;
@@ -92,6 +92,7 @@ const App = () => {
       .catch(function (error) {
         // handle error
         setSearchStatus(false);
+        setLoading(false);
       });
   };
 
