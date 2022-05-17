@@ -1,4 +1,5 @@
 import React from 'react';
+import { css } from "@emotion/react";
 import {
   StyledForm,
   StyledInstructions,
@@ -16,6 +17,16 @@ import {
   StyledFormContainer,
   StyledSearchButton,
 } from './mui-styles/SongGeneratorFormStyles';
+import { ClipLoader } from 'react-spinners';
+
+
+const StyledSpinner = css`
+  margin: auto;
+  color: white;
+  margin: 0 auto;
+  padding: 0;
+  position: relative;
+`;
 
 const SongGenerator = ({
   theme,
@@ -25,6 +36,7 @@ const SongGenerator = ({
   engines,
   selectedEngine,
   chooseEngine,
+  loading,
 }) => {
   return (
     <StyledFormContainer>
@@ -38,7 +50,10 @@ const SongGenerator = ({
           <h3>
             Enter the theme to any songs you are currently writing below and get
             some lyric suggestions! Like what you're seeing? Further edit and
-            work with the suggested lyrics on the interactive cards below! Not sure you like your responses?  Choose from one of any lyric generating engines in the drop down menu for new and different results!
+            work with the suggested lyrics on the interactive cards below! Not
+            sure you like your responses? Choose from one of any lyric
+            generating engines in the drop down menu for new and different
+            results!
           </h3>
         </StyledInstructionsBody>
       </StyledInstructions>
@@ -86,7 +101,12 @@ const SongGenerator = ({
               ))}
             </StyledSelect>
           </StyledFormControl>
-
+          <ClipLoader
+            color='#5b083a'
+            css={StyledSpinner}
+            loading={loading}
+            size={150}
+          />
           <StyledSearchButton
             id='theme-search-button'
             onClick={sendLyricRequest}

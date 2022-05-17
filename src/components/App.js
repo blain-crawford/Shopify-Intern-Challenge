@@ -5,6 +5,7 @@ import ApiResponses from './ApiResponses';
 import { StyledApp } from './mui-styles/appStyles';
 import axios from 'axios';
 import useLocalStorage from 'react-use-localstorage';
+import { ClipLoader } from 'react-spinners';
 
 const App = () => {
   const [storedIdeas, setStoredIdeas] = useLocalStorage('storedIdeas');
@@ -16,6 +17,7 @@ const App = () => {
   const [viewOrEdit, setViewOrEdit] = useState('view');
   const [lyricsToEdit, setLyricsToEdit] = useState('');
   const [selectedEngine, setSelectedEngine] = useState('text-curie-001');
+  const [loading, setLoading] = useState(false)
   const engines = [
     'text-curie-001',
     'text-davinci-002',
@@ -58,6 +60,7 @@ const App = () => {
   };
 
   const sendLyricRequest = () => {
+    setLoading(true)
     axios(options)
       .then(function (response) {
         // handle success
@@ -80,6 +83,7 @@ const App = () => {
         );
         setLyricsTheme('');
         setSearchStatus(true);
+        setLoading(false)
       })
       .catch(function (error) {
         // handle error
@@ -127,6 +131,7 @@ const App = () => {
           engines={engines}
           selectedEngine={selectedEngine}
           chooseEngine={chooseEngine}
+          loading={loading}
         />
         <ApiResponses
           suggestedLyrics={suggestedLyrics}

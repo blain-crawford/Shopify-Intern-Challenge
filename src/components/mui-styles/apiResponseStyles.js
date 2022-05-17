@@ -8,7 +8,7 @@ import TextField from '@mui/material/TextField';
 export const StyledApiResponseContainer = styled('ul', {
   name: 'StyledApiResponseContainer',
 })({
-  width: '100%',
+  width: '50%',
   minHeight: '100px',
   display: 'flex',
   textAlign: 'center',
