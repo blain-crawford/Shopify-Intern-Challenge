@@ -4,10 +4,12 @@ import SongGenerator from './SongGeneratorForm';
 import ApiResponses from './ApiResponses';
 import { StyledApp } from './mui-styles/appStyles';
 import axios from 'axios';
+import useLocalStorage from 'react-use-localstorage';
 
 const App = () => {
+  const [storedIdeas, setStoredIdeas] = useLocalStorage('storedIdeas');
   const [lyricsTheme, setLyricsTheme] = useState('');
-  const [suggestedLyrics, setSuggestedLyrics] = useState([]);
+  const [suggestedLyrics, setSuggestedLyrics] = useState(JSON.parse(localStorage.storedIdeas));
   const [searchStatus, setSearchStatus] = useState(true);
 
   let testRequest = {
@@ -29,6 +31,12 @@ const App = () => {
     url: 'https://api.openai.com/v1/engines/text-curie-001/completions',
   };
 
+  const checkForStoredIdeas = (() => {
+    if(!localStorage.storedIdeas){
+      setStoredIdeas('[]');
+    } 
+  })()
+
   const findLyricSuggestions = (theme) => {
     let newTheme = theme;
     setLyricsTheme(newTheme);
@@ -46,13 +54,19 @@ const App = () => {
           },
           ...suggestedLyrics,
         ]);
-        console.log(suggestedLyrics);
+
+        setStoredIdeas(`${JSON.stringify([
+          {
+            lyrics: response.data.choices[0].text,
+            lyricPrompt: lyricsTheme,
+          },
+          ...suggestedLyrics,
+        ])}`);
         setLyricsTheme('');
         setSearchStatus(true);
       })
       .catch(function (error) {
         // handle error
-        console.log(error);
         setSearchStatus(false);
       });
   };
