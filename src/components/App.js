@@ -11,6 +11,8 @@ const App = () => {
   const [lyricsTheme, setLyricsTheme] = useState('');
   const [suggestedLyrics, setSuggestedLyrics] = useState(JSON.parse(localStorage.storedIdeas));
   const [searchStatus, setSearchStatus] = useState(true);
+  const [viewOrEdit, setViewOrEdit] = useState('view')
+  const [lyricsToEdit, setLyricsToEdit] = useState('')
 
   let testRequest = {
     prompt: `Write a song about ${lyricsTheme}`,
@@ -43,7 +45,6 @@ const App = () => {
   };
 
   const sendLyricRequest = () => {
-    console.log(process.env.REQUEST_KEY);
     axios(options)
       .then(function (response) {
         // handle success
@@ -53,7 +54,7 @@ const App = () => {
             lyricPrompt: lyricsTheme,
           },
           ...suggestedLyrics,
-        ]);
+        ])
 
         setStoredIdeas(`${JSON.stringify([
           {
@@ -71,6 +72,34 @@ const App = () => {
       });
   };
 
+  const editLyrics = (lyrics, lyricsIndex) => {
+    let newSuggestedLyrics = [...suggestedLyrics];
+    newSuggestedLyrics[lyricsIndex].lyrics = lyrics;
+    setSuggestedLyrics(newSuggestedLyrics);
+    setStoredIdeas(JSON.stringify(newSuggestedLyrics));
+  }
+
+  const alternateViewOrEdit = (lyricIndex) => {
+    switch (viewOrEdit) {
+      case 'view':
+        setViewOrEdit('edit')
+        setLyricsToEdit(lyricIndex)
+        break;
+      case 'edit':
+        setViewOrEdit('view')
+        setLyricsToEdit('')
+        break;
+      default:
+        return;
+    }
+  }
+
+  const deleteSuggestion = (lyricsIndex) => {
+    let newSuggestedLyrics = [...suggestedLyrics]
+    newSuggestedLyrics.splice(lyricsIndex, 1)
+    setSuggestedLyrics(newSuggestedLyrics);
+    setStoredIdeas(JSON.stringify(newSuggestedLyrics));
+  }
   return (
     <div>
       <StyledApp>
@@ -83,6 +112,11 @@ const App = () => {
         />
         <ApiResponses 
           suggestedLyrics={suggestedLyrics}
+          alternateViewOrEdit={alternateViewOrEdit}
+          viewOrEdit={viewOrEdit}
+          lyricsToEdit={lyricsToEdit}
+          editLyrics={editLyrics}
+          deleteSuggestion={deleteSuggestion}
         />
       </StyledApp>
     </div>
