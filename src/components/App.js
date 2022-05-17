@@ -4,19 +4,34 @@ import SongGenerator from './SongGeneratorForm';
 import ApiResponses from './ApiResponses';
 import { StyledApp } from './mui-styles/appStyles';
 import axios from 'axios';
+import useLocalStorage from 'react-use-localstorage';
+import { ClipLoader } from 'react-spinners';
 
 const App = () => {
+  const [storedIdeas, setStoredIdeas] = useLocalStorage('storedIdeas');
   const [lyricsTheme, setLyricsTheme] = useState('');
-  const [suggestedLyrics, setSuggestedLyrics] = useState([]);
+  const [suggestedLyrics, setSuggestedLyrics] = useState(
+    JSON.parse(localStorage.storedIdeas),
+  );
   const [searchStatus, setSearchStatus] = useState(true);
+  const [viewOrEdit, setViewOrEdit] = useState('view');
+  const [lyricsToEdit, setLyricsToEdit] = useState('');
+  const [selectedEngine, setSelectedEngine] = useState('text-curie-001');
+  const [loading, setLoading] = useState(false)
+  const engines = [
+    'text-curie-001',
+    'text-davinci-002',
+    'text-babbage-001',
+    'text-ada-001',
+  ];
 
   let testRequest = {
     prompt: `Write a song about ${lyricsTheme}`,
     temperature: 1,
-    max_tokens: 64,
+    max_tokens: 100,
     top_p: 1.0,
     frequency_penalty: 0.0,
-    presence_penalty: -2.0,
+    presence_penalty: 2.0,
   };
 
   let options = {
@@ -26,16 +41,26 @@ const App = () => {
       Authorization: `Bearer ${process.env.REQUEST_KEY}`,
     },
     data: testRequest,
-    url: 'https://api.openai.com/v1/engines/text-curie-001/completions',
+    url: `https://api.openai.com/v1/engines/${selectedEngine}/completions`,
   };
+
+  const checkForStoredIdeas = (() => {
+    if (!localStorage.storedIdeas) {
+      setStoredIdeas('[]');
+    }
+  })();
 
   const findLyricSuggestions = (theme) => {
     let newTheme = theme;
     setLyricsTheme(newTheme);
   };
 
+  const chooseEngine = (engine) => {
+    setSelectedEngine(engine);
+  };
+
   const sendLyricRequest = () => {
-    console.log(process.env.REQUEST_KEY);
+    setLoading(true)
     axios(options)
       .then(function (response) {
         // handle success
@@ -46,17 +71,54 @@ const App = () => {
           },
           ...suggestedLyrics,
         ]);
-        console.log(suggestedLyrics);
+
+        setStoredIdeas(
+          `${JSON.stringify([
+            {
+              lyrics: response.data.choices[0].text,
+              lyricPrompt: lyricsTheme,
+            },
+            ...suggestedLyrics,
+          ])}`,
+        );
         setLyricsTheme('');
         setSearchStatus(true);
+        setLoading(false)
       })
       .catch(function (error) {
         // handle error
-        console.log(error);
         setSearchStatus(false);
       });
   };
 
+  const editLyrics = (lyrics, lyricsIndex) => {
+    let newSuggestedLyrics = [...suggestedLyrics];
+    newSuggestedLyrics[lyricsIndex].lyrics = lyrics;
+    setSuggestedLyrics(newSuggestedLyrics);
+    setStoredIdeas(JSON.stringify(newSuggestedLyrics));
+  };
+
+  const alternateViewOrEdit = (lyricIndex) => {
+    switch (viewOrEdit) {
+      case 'view':
+        setViewOrEdit('edit');
+        setLyricsToEdit(lyricIndex);
+        break;
+      case 'edit':
+        setViewOrEdit('view');
+        setLyricsToEdit('');
+        break;
+      default:
+        return;
+    }
+  };
+
+  const deleteSuggestion = (lyricsIndex) => {
+    let newSuggestedLyrics = [...suggestedLyrics];
+    newSuggestedLyrics.splice(lyricsIndex, 1);
+    setSuggestedLyrics(newSuggestedLyrics);
+    setStoredIdeas(JSON.stringify(newSuggestedLyrics));
+  };
   return (
     <div>
       <StyledApp>
@@ -66,9 +128,18 @@ const App = () => {
           findLyricSuggestions={findLyricSuggestions}
           sendLyricRequest={sendLyricRequest}
           searchStatus={searchStatus}
+          engines={engines}
+          selectedEngine={selectedEngine}
+          chooseEngine={chooseEngine}
+          loading={loading}
         />
-        <ApiResponses 
+        <ApiResponses
           suggestedLyrics={suggestedLyrics}
+          alternateViewOrEdit={alternateViewOrEdit}
+          viewOrEdit={viewOrEdit}
+          lyricsToEdit={lyricsToEdit}
+          editLyrics={editLyrics}
+          deleteSuggestion={deleteSuggestion}
         />
       </StyledApp>
     </div>
