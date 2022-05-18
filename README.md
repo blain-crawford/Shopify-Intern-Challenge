@@ -49,3 +49,10 @@ Usage
   - Application utilizes local storage to save ideas to the users computer for later use
 
 <img src="./src/images/lyric-generator.png" alt="lyric generator interface" />
+
+
+
+
+## Accessibility 
+Application passes Chrome Lighthouse Accessibility report with 100%.
+<img src="./src/images/accessibility.png" alt="lyric generator interface" />
