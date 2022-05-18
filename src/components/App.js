@@ -6,7 +6,6 @@ import ApiResponses from './ApiResponses';
 import { StyledApp } from './mui-styles/appStyles';
 import axios from 'axios';
 import useLocalStorage from 'react-use-localstorage';
-import { API_SECRET_KEY } from './utils';
 
 // eslint-disable-next-line no-unused-vars
 const checkForStoredIdeas = (() => {
@@ -48,7 +47,7 @@ const App = () => {
     headers: {
       'content-type': 'application/json',
       // eslint-disable-next-line no-undef
-      Authorization: `Bearer ${API_SECRET_KEY}`,
+      Authorization: `Bearer ${process.env.REQUEST_KEY}`,
     },
     body: testRequest,
     data: testRequest,
