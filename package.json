@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "webpack-dev-server --mode development --open --hot",
-    "build": "webpack --mode production",
+    "build": "echo 'export const REQUEST_KEY = $REQUEST_KEY' > src/netlify-context.js && webpack --mode production ",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
   },
