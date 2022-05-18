@@ -8,10 +8,11 @@
     "server": "webpack-dev-server --mode development --open --hot",
     "build": "webpack --mode production",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d build"
   },
   "author": "",
   "license": "ISC",
+  "homepage": "https://blain-crawford.github.io/shopify-Intern-Challenge/",
   "dependencies": {
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
@@ -27,6 +28,7 @@
     "process": "^0.11.10",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
+    "react-scripts": "^5.0.1",
     "react-spinners": "^0.12.0",
     "react-use-localstorage": "^3.5.3",
     "stream-browserify": "^3.0.0",

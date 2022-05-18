@@ -9,7 +9,7 @@ import {
   StyledCardButton,
   StyledLyricList,
   StyledTextField,
-} from '../components/mui-styles/apiResponseStyles';
+} from './mui-styles/apiResponseStyles';
 
 const ApiResponses = ({
   suggestedLyrics,
