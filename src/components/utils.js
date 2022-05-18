@@ -1,0 +1,1 @@
+export const API_SECRET_KEY = process.env.REQUEST_KEY

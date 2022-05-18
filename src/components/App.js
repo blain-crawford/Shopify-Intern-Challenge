@@ -6,13 +6,14 @@ import ApiResponses from './ApiResponses';
 import { StyledApp } from './mui-styles/appStyles';
 import axios from 'axios';
 import useLocalStorage from 'react-use-localstorage';
+import { API_SECRET_KEY } from './utils';
 
-  // eslint-disable-next-line no-unused-vars
-  const checkForStoredIdeas = (() => {
-    if (!localStorage.storedIdeas) {
-      localStorage.storedIdeas = JSON.stringify([])
-    }
-  })();
+// eslint-disable-next-line no-unused-vars
+const checkForStoredIdeas = (() => {
+  if (!localStorage.storedIdeas) {
+    localStorage.storedIdeas = JSON.stringify([]);
+  }
+})();
 
 const App = () => {
   const [storedIdeas, setStoredIdeas] = useLocalStorage('storedIdeas');
@@ -48,7 +49,7 @@ const App = () => {
       'content-type': 'application/json',
 
       // eslint-disable-next-line no-undef
-      Authorization: `Bearer ${process.env.REQUEST_KEY}`,
+      Authorization: `Bearer ${API_SECRET_KEY}`,
     },
     data: testRequest,
     url: `https://api.openai.com/v1/engines/${selectedEngine}/completions`,
