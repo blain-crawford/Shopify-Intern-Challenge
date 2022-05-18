@@ -1,7 +1,7 @@
 {
   "name": "front-end-challenge",
   "version": "1.0.0",
-  "description": "",
+  "description": "front end intern challenge for shopify",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -10,7 +10,11 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
   },
-  "author": "",
+  "author": {
+    "name": "Blain Crawford",
+    "email": "blaincrawford@gmail.com",
+    "url": "https://www.linkedin.com/in/blain-crawford418/"
+  },
   "license": "ISC",
   "homepage": "https://blain-crawford.github.io/shopify-intern-challenge/",
   "dependencies": {
