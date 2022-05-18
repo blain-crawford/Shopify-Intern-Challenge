@@ -47,10 +47,10 @@ const App = () => {
     method: 'POST',
     headers: {
       'content-type': 'application/json',
-
       // eslint-disable-next-line no-undef
       Authorization: `Bearer ${API_SECRET_KEY}`,
     },
+    body: testRequest,
     data: testRequest,
     url: `https://api.openai.com/v1/engines/${selectedEngine}/completions`,
   };
